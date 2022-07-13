@@ -131,7 +131,7 @@
  * //Cách gọi hàm sử dụng toán tử gọi ()
  * showDialog();
  * 
- * //Những điề cần biết về function
+ * //Những điều cần biết về function
  * - Khi đặt tên nhiều function cùng nhau thì function cuối cùng ghi đè lên các function đầu tiên
  * - Có thể khai báo biến trong hàm nhưng biến đó chỉ được dùng trong hàm vì nó có tính chất private
  * - Có thể định nghĩa 1 hàm trong 1 hàm khác, nhưng phạm vi sử dụng dùng trong hàm
@@ -352,3 +352,6 @@
 
 
 //Bài 20:
+
+
+//Bài 21: 
