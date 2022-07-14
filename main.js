@@ -365,11 +365,55 @@
 
 //Bài 19: Đối tượng date
 /**
- * 
+    // var date = new Date();
+    // var date2 = Date();
+    // console.log(date);
+    // console.log(typeof date);
+    // console.log(date2);
+    // console.log(typeof date2);
+    
+    // var year = date.getFullYear();
+    // var month = date.getMonth() + 1;
+    // var day = date.getDay();
+    // console.log(`${day}/${month}/${year}`);
  */
 
+//Bài 20: Math object
+/**
+ * - Math.PI
+ * - Math.round()//Làm tròn
+ * - Math.abs()//Trị tuyệt đối
+ * - Math.cell()//Làm tròn trên
+ * - Math.floor()//Làm tròn dưới
+ * - Math.random()//Trả về số thập phân ngẫu nhiên
+ *         function getRandomItem(myArray) {
+ *             return myArray[Math.floor(Math.random() * myArray.length)]
+ *         }
+ *         console.log(getRandomItem);
+ * - Math.min()//Trả về số nhỏ nhất
+ * - Math.max()//Trả về số lớn nhất
+ */
 
-//Bài 20:
+//Bài 21: if else
+/**
+     var days = prompt(`Nhập Thứ trong tuần`);
+    if (days == 'Thứ 2') {
+        alert('Hôm nay là thứ 2');
+    } else if (days == 'Thứ 3') {
+        alert('Hôm nay là thứ 3');
+    } else if (days == 'Thứ 4') {
+        alert('Hôm nay là thứ 4');
+    } else if (days == 'Thứ 5') {
+        alert('Hôm nay là thứ 5');
+    } else if (days == 'Thứ 6') {
+        alert('Hôm nay là thứ 6');
+    } else if (days == 'Thứ 7') {
+        alert('Hôm nay là thứ 7');
+    } else if (days == 'Thứ 8') {
+        console.log('Hôm nay là chủ Nhật');
+    } else {
+        alert('Nhập sai');
+    }
+ */
 
-
-//Bài 21: 
+//Bài 22: Switch
