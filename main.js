@@ -433,7 +433,161 @@
     }
  */
 
-//Bài 23: Toán tử 3 ngôi
+//Bài 23: Tổng hợp
 /**
+# 1. if, else if, else
+  >> cú pháp
+  if(<dieu_kien>){
+        --code--
+  }else if(<dieu_kien>){
+        --code--
+  }else{
+        --code--
+  }
+
+  >> if, else if
+  - nếu một nhánh thỏa mãn điều kiện thì sẽ bỏ qua các nhánh còn lại                                                                      
+
+  >> else
+  - nếu tất cả các nhánh đều không thỏa mãn thì sẽ vào else
+
+# 2. switch
+  >> cú pháp
+  switch(<bieu_thuc>){
+        case <dieu_kien_bang>:
+            --code--
+            break
+        case <dieu_kien_bang>:
+            --code--
+            break
+        default:
+            --code--
+        
+  }
+
+  - khi điều kiện đúng sẽ thực hiện các dòng code bên trong và khi gặp từ khóa break thì sẽ thoát khỏi biểu thức switch
+    nếu không gặp từ khóa break thì sẽ thực hiện các câu lệnh phía sau mà không cần xét điều kiện
+
+  - nếu tất cả các case đều không lọt vào thì sẽ lọt vào default
+
+# 3. Khi nào sử dụng switch khi nào sử dụng if else
+  >> khi sử dụng if else
+  - khi dùng toán tử >, >=, <, <=, !=
+  - khi dùng toán tử == mà có <= 3 trường hợp
+
+  >> khi sử dụng switch
+  - khi sử dụng toán tử == mà có > 3 trường hợp
+
+# 4. Toán tử 3 ngôi
+  >> cú pháp
+  <dieu_kien> ? --code-- : --code
+  VD: var result = course.coin > 0 ? `${course.coin} coin` : 'Miễn phí'
+
+  - nếu điều kiện đúng thì sẽ thực hiện đoạn code sau dấu ?
+  - nếu điều kiện sai thì sẽ thực hiện đoạn code sau dấu :
+ */
+
+ //Bài 24: Vòng lặp for
+ /**
+    function getRandNumbers(min, max, length) {
+        var a = [];
+        for(var i = 0; i < length; i++) {
+            a[i] = Math.random() * (max - min) + min;
+        }
+        return a;
+    }
+    console.log(getRandNumbers(1, 100, 99));
+
+// Hết sức lưu ý: Hãy suy nghĩ kỹ để đảm bảo vòng lặp (loop)
+// luôn có điểm dừng, trình duyệt của bạn sẽ bị treo
+// nếu vòng lặp không có điểm dừng.
  * 
+// VD 1: for (var i = 0; i < 100; i--) // i++ mới đúng
+// VD 2: for (var i = 100; i >= 0; i++) // i-- mới đúng
+// là 2 vòng lặp không có điểm dừng (lặp vô hạn)
+ *
+// => Treo trình duyệt!!! 
+
+    var myArray = [
+        'Java',
+        'PHP',
+        'Dart',
+        'Ruby',
+        'Python'
+    ];
+    var arrayLength = myArray.length;
+    for (var i = 1; i < arrayLength; i++) {
+        console.log(myArray[i]);
+    }
+
+//for in
+    function run(object) {
+        var arr = [];
+        for (var key in object) {
+        arr.push(`Thuộc tính ${key} có giá trị ${object[key]}`)
+        };
+        return arr;
+    }
+    // Expected results:
+    console.log(run({ name: 'Nguyen Van A', age: 16 }));
+    // Output:
+    // [
+    //     "Thuộc tính name có giá trị Nguyen Van A",
+    //     "Thuộc tính age có giá trị 16"
+    // ]
+
+//for of
+    var orders = [
+        {
+            name: 'Khóa học HTML - CSS Pro',
+            price: 3000000
+        },
+        {
+            name: 'Khóa học Javascript Pro',
+            price: 2500000
+        },
+        {
+            name: 'Khóa học React Pro',
+            price: 3200000
+        }
+    ];
+    function getTotal(sumPrice) {
+        let sum = 0;
+        // for(var key in orders) {
+        //     sum += sumPrice[key].price;
+        // }
+
+        for (var value of Object.keys(orders)) {
+            sum += sumPrice[value].price;
+        }
+        return sum;
+    }
+    console.log(getTotal(orders))
+
+  */
+
+//Bài 25: vòng lặp while, do while
+/**
+ * //while
+    var myArray = [
+        'JavaScript',
+        'PHP',
+        'Java'
+    ]
+    var i = 0;
+    while (i <= myArray.length) {
+        console.log(myArray[i]);
+        i++;
+    }
+ 
+ * //do while
+    var i = 0;
+    var isSuccess = false;
+    do {
+        i++;
+        console.log('Nạp thẻ lần' + i);
+        if (false) {
+            isSuccess = true;
+        }
+    } while (!isSuccess && i < 3);
  */
