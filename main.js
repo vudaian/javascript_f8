@@ -596,3 +596,119 @@
 /**
  * 
  */
+
+//Bài 27: Làm việc với mảng
+/**
+    courses=[
+        {
+            id :0,
+            name: "html",
+            coin:200
+        },
+        {
+            id :1,
+            name: "php",
+            coin:0
+        },
+        {
+            id :2,
+            name: "java",
+            coin:300
+        },
+        {
+            id :1,
+            name: "html",
+            coin:200
+        },
+        {
+            id :1,
+            name: "css",
+            coin:300
+        },
+    ]
+        courses.forEach(function (course,index) {
+            console.log(index,course);
+        });
+        var check=courses.every(function (course,indel) {
+            return course.coin===0;
+        });
+        console.log("every()"+" check all coin=0 : " +check);
+
+        var check=courses.every(function (course,indel) {
+            return course.coin===200
+            
+        });
+        console.log("some()"+" check coin=200 : "+check);
+
+        var check=courses.find(function (course,indel) {
+            return course.name==="html"
+        });
+        console.log("find()"+" check name html : ");
+        console.log(check);
+
+        var check=courses.filter(function (course,indel) {
+            return course.name==="html";
+        });
+        console.log("filter()"+" check name html : ");
+        console.log(check);
+
+//Tính tổng số like trong mảng sports dùng reduce()
+        const sports = [
+            {
+                id: 1,
+                name: 'Bóng rổ',
+                like: 6
+            },
+            {
+                id: 2,
+                name: 'Bơi lội',
+                like: 5
+            },
+            {
+                id: 3,
+                name: 'Bóng đá',
+                like: 10
+            },
+        ];
+        var html = sports.reduce(function(a, b) {
+            var total = a +b.like;
+            return total;
+        }, 0);
+        console.log(html)
+
+        function getTotalGold(sport){
+            var totalGold = sport.reduce(function(total, sport) {
+                return total + sport.gold;
+            }, 0)
+            return totalGold
+        }
+        
+//them ten mon the thao truoc bong ro, boi loi
+// thêm trường likeText 
+        var myHandle = function(sport, index) {
+            return {
+                id: sport.id,
+                name: `Môn thể thao: ${sport.name}`,
+                like: `Số lượt thích: ${sport.like}`,
+                likeText: `Bằng chữ: ${sport.like}`
+            }
+        }
+        var html = sports.map(myHandle);
+        console.log(html);
+
+//CÁC HÀM GIÚP LÀM VIỆC VỚI MẢNG NGẮN NGỌN HƠN
+NOTE: Các hàm dưới đây đều có thể thực hiện bằng vòng lặp. và tham số truyền vào phải là một function, nếu không truyền vào 1 function sẽ gây ra lỗi.
+
+- every: dùng để kiểm tra tất cả các phần tử trong mảng cần cùng thõa mãn một điều kiện nào đó, kiểu dữ liệu trả về là boolean.
+
+- some: ngược lại với every, chỉ cần tìm thấy điều kiện thỏa mãn thì sẽ trả về true. Kiểu dữ liệu trả về vẫn là boolean.
+ -> Hiểu đơn giản là every là toán tử &&, còn some là toán tử ||
+
+- find : dùng để tìm kiếm giá trị của key cần tìm, nhưng sẽ chỉ tìm thấy được và trả về một phần tử tìm thấy.
+
+- filter: giống với find cũng là tìm kiếm nhưng sẽ tìm kiếm nhiều hơn là 1 phần tử, sẽ trả về hết tất cả các phần tử tìm kiếm được.
+
+- map: dùng để thêm hoặc sửa lại các phần tử trong object của một mảng theo cách mong muốn.
+
+- reduce: dùng để lưu trữ biến tích trữ, thay vì dùng vòng lặp để tính giá trị cộng dồn từ các phần tử trong mảng thì reduce sẽ giúp chúng ta việc đó.
+ */
