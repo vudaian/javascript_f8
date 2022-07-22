@@ -712,3 +712,201 @@ NOTE: Các hàm dưới đây đều có thể thực hiện bằng vòng lặp.
 
 - reduce: dùng để lưu trữ biến tích trữ, thay vì dùng vòng lặp để tính giá trị cộng dồn từ các phần tử trong mảng thì reduce sẽ giúp chúng ta việc đó.
  */
+
+//Bài 28: includes method
+/**
+ *  var Arr = [1, 2, 3, 4, 45, 6, 78, 8, 7, 6, 5, 4, 54];
+        //IndexOf 
+        console.log(Arr.indexOf(4));
+        //Includes 
+        console.log(Arr.includes(4))
+
+//includes thuần Javascript
+    Array.prototype.includes2 = function(searchElement, fromIndex) {
+        const arrayLength = this.length;
+    var startPosition = 0;
+    if(fromIndex) {
+        if(fromIndex >= 0) {
+        startPosition = fromIndex;
+        } else {
+        startPosition = arrayLength + fromIndex;
+        if (startPosition < 0) {
+            startPosition = 0;
+        }
+        }
+    }
+    
+    for(var i = startPosition; i < arrayLength; i++) {
+        if(this[i] === searchElement) {
+            return true;
+        }
+        }
+        return false;
+    }
+
+    const numbersToSearch = [1, 2, 3, 4, 5];
+    console.log(numbersToSearch.includes2(3));
+    console.log(numbersToSearch.includes2(3, 3));
+    console.log(numbersToSearch.includes2(3, -6));
+    console.log(numbersToSearch.includes2(3, 6));
+ */
+
+
+//Bài 29: Callback
+/**
+     function myFunction(param) {
+         console.log(param);
+    }
+    
+    function myCallback() {
+    
+    }
+    myFunction(myCallback);
+
+    //ARRAY EXAMPLE 1 
+    var course = [
+        'Javascript',
+        'PHP',
+        'HTML',
+        'REACT JS',
+        'ANGULAR JS',
+        'PHP',
+    ]
+    //ARRAY EXAMPLE 2
+    var array = [1, 2, 3, 4, 5, 6];
+    
+    //forEach()
+    //1. Create forEach();
+    Array.prototype.forEach2 = function (callback) {
+        var length = this.length;
+        for (i = 0; i < length; i++) {
+            callback(this[i], i);
+        }
+    }
+    //2. Using
+    course.forEach2(function (valueCurrent, index) {
+        console.log(index,valueCurrent);
+    });
+    
+    //REDUCE()
+    //1. Create reduce();
+    Array.prototype.reduce2 = function (callback, initial) {
+        var i = 0;
+        var length = this.length;
+        if (arguments.length < 2) {
+            initial = this[0];
+            i = 1;
+        }
+        var result = initial;
+        for (; i < length; i++) {
+            result = callback(result, this[i], i);
+        }
+        return result;
+    }
+    //2. Using
+    var tong = array.reduce2(function (total, current, index) {
+        return total + current;
+    }, 0)
+    console.log(tong);
+    
+    // FIN();
+    //1. Create fin();
+    Array.prototype.find2 = function (callback, value) {
+        var bol;
+        var array = [];
+        for (var i = 0; i < this.length; i++) {
+            bol = callback(this[i], i);
+            if (bol === true) {
+                return array = this[i];
+            }
+        }
+        return value;
+    }
+    //2. Using
+    var string = course.find2(function (valueCurrent) {
+        return valueCurrent === 'PHP';
+    });
+    console.log(string);
+    
+    //filter()
+    // <
+    //1. Create filter();
+    Array.prototype.filter2 = function (callback) {
+        var result = [];
+        var bol;
+        var length = this.length;
+        for (i = 0; i < length; i++) {
+            bol = callback(this[i], i, this);
+            if (bol == true) {
+                result.push(this[i]);
+            }
+        }
+        return result;
+    }
+    //2. Using
+    var string = course.filter2(function (value, index, arr) {
+        return value == 'PHP';
+    })
+    console.log(string);
+ */
+
+//Bài 30: Get element methods
+/**
+ * //HTML DOM
+ * 1. Element: ID, class, tag, CSS selector, HTML collection
+ * 2. Attribute
+ * 3. Text
+ * 
+// var headingNode = document.getElementById('heading');
+// console.log({
+//     element: headingNode,
+// });//By ID
+
+// var headingNodes = document.getElementsByClassName('h1');
+// console.log(headingNodes);//By class
+
+// var pNode = document.getElementsByTagName('p');
+// console.log(pNode);//By tag name
+
+// var heading2Node = document.querySelectorAll('.box .heading_2');
+// console.log(heading2Node[0]);//By CSS selection
+
+// console.log(document.forms['form-1']);
+// console.log(document.forms.testForm);//HTML collection
+ 
+// var listItemNodes = document.querySelectorAll('.box_1 li');
+// console.log(listItemNodes)
+
+// var boxNode = document.querySelector('.box_1');
+// console.log(boxNode.querySelectorAll('li'));
+// console.log(boxNode.getElementsByTagName('li'));
+*/
+
+//Bài 31: DOM attributes
+/**
+     var headingElement = document.querySelector('h1');
+    headingElement.id = 'headingID';
+    // headingElement.className = 'headingclassName';
+    // headingElement.setAttribute('class', 'headingClass');
+    headingElement.title = 'headingAttribute';
+    console.log(headingElement);
+    
+    console.log(headingElement.getAttribute('class'));
+ */
+
+//Bài 32: InnerText vs textContent Property
+/**
+    var headingElement = document.querySelector('.heading');
+    
+    headingElement.innerText = 'New heading';
+    headingElement.textContent = 'New heading';
+    
+    console.log(headingElement.innerText);
+    console.log(headingElement.textContent);
+ */
+
+//Bài 33: InnerHTML vs OuterHTML Property
+/**
+
+ */
+
