@@ -907,6 +907,359 @@ NOTE: Các hàm dưới đây đều có thể thực hiện bằng vòng lặp.
 
 //Bài 33: InnerHTML vs OuterHTML Property
 /**
+     ------innerText-----
+    Vd:  <h1 class=”heading”>Heading text</h1>
+    .headingElement.innerText = ‘New heading’;  // biến Heading text thành New heading
+    
+    ------innerHTML-------
+    vd:  <div class=”box”> …. </div>
+    var boxElement = document.querySelector(‘.box’);
+        boxElement.innerHTML = ‘<h1>Heading</h1>’  // thêm thẻ ‘<h1>Heading</h1> vào bên trong chỗ 3 chấm
+
+    //////
+    var courses = ['HTML & CSS', 'Javascript', 'PHP', 'Java']
+    function render(courses) {
+        var newCourse = courses.map(function(course) {
+            return `<li>${course}</li>`;
+        });
+        var ulElement = document.querySelector(".courses-list");
+        ulElement.innerHTML = newCourse.join('');
+    }
+    render(courses);
+    
+    var boxElement = document.querySelector('.box');
+    console.log([boxElement]);
+ */
+
+//Bài 34: DOM CSS
+/**
+    //  var boxElement = document.querySelector('.box');
+    
+    // // boxElement.style.width = '200px';
+    // // boxElement.style.height = '100px';
+    // // boxElement.style.backgroundColor = 'blue';
+    
+    // Object.assign(boxElement.style, {
+    //     width: '200px',
+    //     height: '100px',
+    //     backgroundColor: 'red'
+    // });
+    // console.log(boxElement.style);
+ */
+
+//Bài 35: ClassList Property
+/**
+ * - add
+ * - contains
+ * - remove
+ * - toggle
+    // var boxElement = document.querySelector('.box');
+    // console.log(boxElement.classList.length);
+    // console.log(boxElement.classList[0]);
+    // console.log(boxElement.classList.value);
+    // boxElement.classList.add('red', 'blue');
+    // console.log(boxElement.classList.contains('red'));
+    // setTimeout(() => {
+    //     boxElement.classList.remove('red');
+    // }, 3000);
+    // setTimeout(() => {
+    //     boxElement.classList.toggle('red');
+    // }, 3000);
+ */
+
+//Bài 36: DOM events
+/**
+    var buttonElement = document.querySelector('button');
+    buttonElement.onclick = function () {
+        buttonElement.style.color = "#fff";
+    }
+    
+    var valueInput
+    var inputElement = document.querySelector('input[type="text"]');
+    inputElement.oninput = function(e) {
+        valueInput = e.target.value;
+    }
+    
+    var checkInput;
+    var inputElement = document.querySelector('input[type="checkbox"]');
+    inputElement.onchange = function(e) {
+        checkInput = e.target.checked;
+    }
+    
+    var select;
+    var selectElement = document.querySelector('select');
+    selectElement.onchange = function(e) {
+        select = e.target.value;
+    }
+    
+    var valueInput
+    var inputElement = document.querySelector('input[type="text"]');
+    inputElement.onkeyup = function(e) {
+        valueInput = e.target.value;
+    }
+    
+    document.onkeyup = function(e) {
+        console.log(e);
+        switch(e.which) {
+            case 27: 
+                console.log('EXIT');
+                break;
+            case 13:
+                console.log('SEND CHAT');
+                break;
+        }
+    }
+
+//preventDefault: Hành vi mặc định
+
+
+//stopPropagation
+ */
+
+//Bài 37: Event listener
+/**
+    var btn = document.getElementById('btn');
+    
+    // setTimeout(function() {
+    //     btn.onclick = function() {
+    //         console.log('Viec 1');
+        
+    //         console.log('Viec 2');
+        
+    //         alert('Viec 3');
+    //     };
+    // }, 3000);
+    
+    btn.addEventListener('click', function(e) {
+        console.log(Math.random());
+    });
+
+//Event listener khác DOM event
+    // addEventListener sẽ không ghi đè các trình sự kiện,ngược lại DOM event sẽ ghi đè trình sự kiện hiện có
+    // DOM event sẽ luôn hoạt động, trong khi addEventListener không hoạt động trong Internet Explorer trước phiên bản 9. Bạn có thể sử dụng tương tự attachEvent
+ */
+
+//Bài 38: JSON
+/**
+ * 1. Là một định dạng dữ liệu (chuỗi)
+ * 2. JavaScript Object Notation
+ * 3. JSON: Number, Boolean, Null, Array, Object,String
+ * 
+ * //Mã Hóa / Giải mã
+ * //Encode / decode
+ * 
+ * //Stringify: Từ JavaScript type -> JSON
+ * //Parse: Từ JSON -> javascript type
+    
+    var jsonArray = '["javascript", "PHP"]';
+    var jsonObject = '{"name":"Dai An}, "age":"12"}';
+    
+    console.log(JSON.parse(jsonArray));
+ */
+
+//Bài 39: Promise
+/**
+ * //sync: Đồng bộ
+ * //async: Bất đồng bộ (setTimeout, setInterval, fetch, XMLHttpRequest, đọc file, requestAnimationFrame) -> Callback
+
+ *  setTimeout(function() {
+        console.log('Dòng này sẽ in ra sau')
+    }, 0)
+    // setTimeout là tác vụ bất động bộ (async)
+
+    console.log('Dòng này sẽ in ra trước') // Đây là tác vụ đồng bộ (sync)
+
+ * //Pain: Nỗi đau
+    // Code thế này sẽ chạy đồng bộ
+console.log('Step 1');
+console.log('Step 2');
+console.log('Step 3');
+console.log('************************');
+
+// Code thế này sẽ chạy bất đồng bộ
+console.log('Step 1');
+setTimeout(() => {
+  console.log('Step 2');
+  console.log('************************');
+}, 0000); // ngay cả khi nó không mất giây nào
+console.log('Step 3');
+
+// Sử lý bất đồng bộ với callback hell :D
+
+To cook rice, we need 15 minutes --> Mình để 15 giây cho nhanh
+ * 1. get rice -> 1sec
+ * 2. wash rice -> 2sec
+ * 3. add water -> 1sec
+ * 4. put rice in rice cooker -> 1sec
+ * 5. cook rice -> 10sec
+ * TOTAL = 15sec
+
+// **********************
+// Mình sử dụng ES6 arrow function syntax
+
+const cookRice = () => {
+    setTimeout(() => {
+        console.log('Getting rice... 1s');
+        setTimeout(() => {
+            console.log('Washing rice... 2s');
+    
+            setTimeout(() => {
+                console.log('Adding water... 1s');
+        
+                setTimeout(() => {
+                    console.log('Putting in rice cooker... 1s');
+                    setTimeout(() => {
+                        console.log('Cooking rice... 10s');
+                    }, 10000);
+                }, 1000);
+            }, 1000);
+        }, 2000);
+    }, 1000);
+};
+cookRice();
+
+//Concept
+    var promise = new Promise(
+        //executor
+        function(resolve, reject) {
+            //Logic
+            //Thành công: resolve()
+            //Thất bại: reject()
+        }
+    );
+
+    promise
+        .then(function() {
+            
+        })
+        .catch(function() {
+            
+        })
+        .finally(function() {
+            
+        })
+
+//Chain
+    function sleep(ms) {
+        return new Promise(function(resolve) {
+            setTimeout(resolve, ms);
+        });
+    }
+
+    sleep(1000)
+        .then(function() {
+            console.log(1);
+            return sleep(1000);
+        })
+        .then(function() {
+            console.log(2);
+            return sleep(1000);
+        })
+        .then(function() {
+            console.log(3);
+            return sleep(1000);
+        })
+        .then(function() {
+            console.log(4);
+            return sleep(1000);
+        })
+
+
+//Callback hell
+function hell(value, cb) {
+    cb(value);
+}
+
+// Không sử dụng Promise dẫn đến tạo ra callback hell 
+hell(1, function (valueFromA) {
+    hell(valueFromA + 1, function (valueFromB) {
+        hell(valueFromB + 1, function (valueFromC) {
+            hell(valueFromC + 1, function (valueFromD) {
+                console.log(valueFromD + 1);
+            });
+        });
+    });
+});
+
+// Sử dụng Promise sẽ tạo ra đoạn code dễ đọc hơn và vẫn đảm bảo đúng logic
+function notHell(value) {
+    return new Promise(function (resolve) {
+        resolve(value);
+    });
+}
+
+notHell(1)
+    .then(function (value) {
+        return value + 1;
+    })
+    .then(function (value) {
+        return value + 1;
+    })
+    .then(function (value) {
+        return value + 1;
+    })
+    .then(function (value) {
+        console.log(value + 1);
+    });
+
+
+//Promise methods(resolve, reject, all)
+    // var promise = new Promise(function(resolve, reject) {
+    //     resolve('success')
+    // });
+    // var promise = Promise.resolve('success');
+    var promise = Promise.reject('error');
+
+    promise
+        .then(function(result) {
+            console.log('result: ', result);
+        })
+        .catch(function(result) {
+            console.log('error: ', result);
+        })
+
+
+//Promise example
 
  */
 
+//Bài 40: Fetch
+/** 
+    var postApi = 'https://jsonplaceholder.typicode.com/posts';
+    
+    fetch(postApi)
+        .then(function(response) {
+            return response.json();
+            //JSON.parse: JSON -> Javascript type
+        })
+        .then(function(posts) {
+            var htmls = posts.map(function(post) {
+                return `<li>
+                    <h2>${post.title}</h2>
+                    <h2>${post.body}</h2>
+                </li>`
+            });
+    
+            var html = htmls.join('');
+            document.getElementById('post-block').innerHTML = html;
+        })
+        .catch(function(err) {
+            alert('Có lỗi!');
+        })
+
+*/
+//Bài 41: JSON server
+/**
+    var courseApi = 'http://localhost:3000/courses';
+    
+    fetch(courseApi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function(courses) {
+            console.log(courses);
+        })
+        .catch(function (err) {
+            console.log('Có lỗi'); 
+        })
+ */
