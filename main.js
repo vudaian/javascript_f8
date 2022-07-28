@@ -1263,3 +1263,67 @@ notHell(1)
             console.log('Có lỗi'); 
         })
  */
+
+//Bài 42: ECMAScript 6
+/**
+ * 1. Let const
+ * 2. Template literals
+ * 3. Arrow function
+        const logger = (log) => {
+            console.log(log);
+        }
+        logger('Message ...')
+        
+        const sum = (a, b) => a + b;
+        console.log(sum(2, 3))
+        
+        const sum2 = (a, b) => ({a: a, b: b});
+        console.log(sum2(2, 4));
+        
+        const logger2 = log2 => console.log(log2);
+        logger2('Message ...');
+ * 4. Classes
+        class Course {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+        
+            getName() {
+                return this.name;
+            }
+        
+            getPrice() {
+                return this.price;
+            }
+        }
+        
+        const phpCourse = new Course('PHP', 1000);
+        const jsCourse = new Course('Javascript', 1000);
+        
+        console.log(phpCourse);
+        console.log(jsCourse);
+ * 5. Default parameter values //Giá trị mặc định
+ * 6. Enhanced object literals
+    Enhanced Object Literals giúp chúng ta: 
+        - định nghĩa key dưới dạng biến cho object.
+        - định nghĩa value dưới dạng biến cho object.
+        - định nghĩa key-value cho object thông qua biến.
+        - định nghĩa Method cho object không cần key.
+
+    var name = 'Javascript'; var price = 1000; 
+
+    //cách 1 Tạo Object ( theo tiêu chuẩn của object – các value là biến) 
+    var course = { name: name, price: price , getName: function(){return name} };
+
+    //cách 2 Tạo Object ( bỏ hết key của object )
+    var course = { name, price , getName(){return this.name} }; //return ra value name
+    var course = { name, price , getName(){return this.name} }; //return ra key name
+
+    //cách 3 Tạo Object ( Các key là biến  [biến = key] : ‘value muốn nhập vô’ )
+    var fieldName = ‘Name’ ; var fieldPrice = ‘Price’; 
+    var course = { [fieldName]: ‘PHP’, [fieldPrice]: ‘1000’ , getName(){return fieldName} }; =>> return ra key : 'Name'
+    var course = { [fieldName]: ‘PHP’, [fieldPrice]: ‘1000’ , getName(){return this[fieldName] }}; =>> return ra value của key: 'PHP'
+
+ * 7. 
+ */
